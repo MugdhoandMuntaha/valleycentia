@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search, SlidersHorizontal } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
@@ -10,7 +10,7 @@ import { useCart } from '@/context/CartContext';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
-export default function ProductsPage() {
+function ProductsContent() {
     const searchParams = useSearchParams();
     const urlSearchQuery = searchParams.get('search') || '';
 
@@ -177,5 +177,20 @@ export default function ProductsPage() {
                 )}
             </div>
         </div>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex justify-center items-center py-20">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary-500 mx-auto"></div>
+                    <p className="mt-4 text-gray-600">Loading products...</p>
+                </div>
+            </div>
+        }>
+            <ProductsContent />
+        </Suspense>
     );
 }
