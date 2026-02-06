@@ -1,0 +1,64 @@
+-- Add 10 dummy products for each category (Necklaces, Rings, Earrings, Bracelets, Watches)
+-- Total 50 new products
+
+INSERT INTO products (name, description, price, original_price, discount_percentage, image_url, category_id, stock, featured, rating, review_count, selling_fast, promo_code, promo_price) VALUES
+
+-- NECKLACES (10 items)
+('Crystal Heart Necklace', 'Sparkling crystal heart pendant on silver chain', 149.99, 199.99, 25, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 50, false, 4.5, 120, true, 'HEART25', 139.99),
+('Vintage Locket Necklace', 'Antique finish gold locket with floral design', 299.99, NULL, 0, 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 20, false, 4.8, 85, false, NULL, NULL),
+('Diamond Choker', 'Minimalist diamond choker in 14K white gold', 899.99, 1099.99, 18, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 10, true, 4.9, 210, true, NULL, NULL),
+('Sapphire Pendant', 'Deep blue sapphire pendant with diamond halo', 599.99, NULL, 0, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 15, false, 4.7, 95, false, NULL, NULL),
+('Layered Gold Chain', 'Trendy layered necklace set in 18K gold vermeil', 129.99, 159.99, 19, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 45, true, 4.4, 150, true, 'LAYER10', 119.99),
+('Pearl Station Necklace', 'Delicate chain with scattered freshwater pearls', 249.99, NULL, 0, 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 30, false, 4.6, 70, false, NULL, NULL),
+('Initial Pendant Necklace', 'Personalized initial pendant in rose gold', 199.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 60, false, 4.8, 300, true, NULL, NULL),
+('Ruby Tear Drop Necklace', 'Elegant ruby teardrop on a gold chain', 749.99, 899.99, 16, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 8, true, 4.9, 110, true, NULL, NULL),
+('Boho Beaded Necklace', 'Colorful beaded necklace with tassel accent', 49.99, 69.99, 28, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 100, false, 4.3, 45, false, 'BOHO20', 39.99),
+('Platinum Cross Necklace', 'Classic platinum cross pendant', 549.99, NULL, 0, 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800', (SELECT id FROM categories WHERE slug = 'necklaces'), 25, false, 4.7, 80, false, NULL, NULL),
+
+-- RINGS (10 items)
+('Emerald Cut Halo Ring', 'Vintage style emerald cut diamond with halo', 2599.99, 3299.99, 21, 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 5, true, 5.0, 180, true, 'HALO10', 2499.99),
+('Twisted Band Ring', 'Twisted rope design band in 14K yellow gold', 299.99, NULL, 0, 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 40, false, 4.6, 65, false, NULL, NULL),
+('Opal Statement Ring', 'Large oval opal set in sterling silver', 189.99, 229.99, 17, 'https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 15, true, 4.7, 120, true, NULL, NULL),
+('Black Diamond Ring', 'Bold black diamond solitaire in rhodium plated gold', 1299.99, 1599.99, 18, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 8, true, 4.8, 90, true, NULL, NULL),
+('Signet Ring', 'Classic gold signet ring, engravable', 399.99, NULL, 0, 'https://images.unsplash.com/photo-1603561596112-0a132b757442?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 25, false, 4.5, 55, false, NULL, NULL),
+('Infinity Ring', 'Diamond encrusted infinity symbol ring', 499.99, 649.99, 23, 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 30, true, 4.7, 140, true, NULL, NULL),
+('Birthstone Ring (Jan)', 'Garnet birthstone ring in silver', 149.99, NULL, 0, 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 50, false, 4.6, 40, false, NULL, NULL),
+('Double Finger Ring', 'Modern double finger ring with pave diamonds', 699.99, 899.99, 22, 'https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 12, false, 4.4, 30, true, NULL, NULL),
+('Chevron Stack Ring', 'V-shaped chevron ring for stacking', 199.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 60, false, 4.5, 110, false, NULL, NULL),
+('Pearl Ring', 'Single freshwater pearl on a thin gold band', 249.99, 299.99, 16, 'https://images.unsplash.com/photo-1603561596112-0a132b757442?w=800', (SELECT id FROM categories WHERE slug = 'rings'), 20, true, 4.8, 95, false, NULL, NULL),
+
+-- EARRINGS (10 items)
+('Diamond Huggie Hoops', 'Small diamond pave huggie earrings', 599.99, 749.99, 20, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 35, true, 4.8, 220, true, NULL, NULL),
+('Silver Threader Earrings', 'Minimalist silver chain threader earrings', 79.99, NULL, 0, 'https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 80, false, 4.5, 60, false, NULL, NULL),
+('Rose Gold Studs', 'Simple polished rose gold ball studs', 129.99, NULL, 0, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 50, false, 4.6, 130, false, NULL, NULL),
+('Chandelier Earrings', 'Crystal chandelier earrings for formal wear', 349.99, 499.99, 30, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 15, true, 4.7, 85, true, 'PARTY30', 299.99),
+('Turquoise Drop Earrings', 'Vibrant turquoise drops in gold bezel', 299.99, NULL, 0, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 25, false, 4.8, 75, false, NULL, NULL),
+('Geometric Gold Dangles', 'Modern geometric shaped gold dangle earrings', 249.99, 299.99, 16, 'https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 30, true, 4.5, 90, true, NULL, NULL),
+('Black Onyx Studs', 'Bold black onyx studs in silver setting', 149.99, NULL, 0, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 40, false, 4.6, 50, false, NULL, NULL),
+('Diamond Climbers', 'Leaf motif diamond ear climbers', 899.99, 1099.99, 18, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 10, true, 4.9, 150, true, NULL, NULL),
+('Feather Charm Earrings', 'Boho style silver feather earrings', 89.99, NULL, 0, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 65, false, 4.4, 40, false, NULL, NULL),
+('Cluster Stud Earrings', 'Flower cluster diamond stud earrings', 699.99, 849.99, 17, 'https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800', (SELECT id FROM categories WHERE slug = 'earrings'), 20, true, 4.8, 110, true, NULL, NULL),
+
+-- BRACELETS (10 items)
+('Gold Link Bracelet', 'Chunky gold link chain bracelet', 499.99, 649.99, 23, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 25, true, 4.7, 130, true, 'LINK20', 449.99),
+('Silver Cuff Bracelet', 'Polished sterling silver cuff', 199.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 45, false, 4.6, 90, false, NULL, NULL),
+('Beaded Charm Bracelet', 'Multi-color beaded bracelet with gold charms', 89.99, 119.99, 25, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 60, false, 4.4, 75, true, NULL, NULL),
+('Diamond Bangle', 'Hinged bangle with micro-pave diamonds', 1299.99, 1599.99, 18, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 12, true, 4.9, 180, true, NULL, NULL),
+('Friendship Bracelet', 'Woven friendship bracelet with silver details', 39.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 100, false, 4.3, 200, false, NULL, NULL),
+('Pearl Bracelet', 'Double strand freshwater pearl bracelet', 349.99, 449.99, 22, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 20, true, 4.8, 115, false, NULL, NULL),
+('Rope Chain Bracelet', 'Twisted gold rope chain bracelet', 299.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 35, false, 4.7, 85, false, NULL, NULL),
+('Gemstone Station Bracelet', 'Delicate chain with colorful gemstone stations', 249.99, 299.99, 16, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 28, true, 4.6, 95, true, NULL, NULL),
+('Mens Leather Bracelet', 'Braided black leather bracelet with steel clasp', 79.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 55, false, 4.5, 140, false, NULL, NULL),
+('Ankle Bracelet', 'Gold chain anklet with heart charm', 129.99, NULL, 0, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800', (SELECT id FROM categories WHERE slug = 'bracelets'), 40, false, 4.7, 60, false, NULL, NULL),
+
+-- WATCHES (10 items)
+('Chronograph Sport Watch', 'Stainless steel chronograph with black dial', 399.99, 499.99, 20, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 25, true, 4.8, 160, true, NULL, NULL),
+('Leather Strap Dress Watch', 'Classic white dial with brown leather strap', 199.99, NULL, 0, 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 40, false, 4.6, 95, false, NULL, NULL),
+('Smart Hybrid Watch', 'Classic look with smart fitness tracking features', 299.99, 349.99, 14, 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 30, true, 4.5, 110, true, NULL, NULL),
+('Gold Mesh Watch', 'Slim gold watch with mesh band', 249.99, NULL, 0, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 35, true, 4.7, 130, false, NULL, NULL),
+('Dive Watch', 'Water resistant automatic dive watch', 599.99, 799.99, 25, 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 15, true, 4.9, 85, true, 'DIVE25', 549.99),
+('Ceramic Watch', 'White ceramic watch with crystal indices', 449.99, NULL, 0, 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 20, false, 4.8, 70, false, NULL, NULL),
+('Vintage Digital Watch', 'Retro style digital gold watch', 89.99, NULL, 0, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 60, false, 4.4, 200, true, NULL, NULL),
+('Skeleton Watch', 'Automatic watch with visible movement', 899.99, 1199.99, 25, 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 8, true, 4.9, 150, false, NULL, NULL),
+('Field Watch', 'Rugged field watch with canvas strap', 149.99, NULL, 0, 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 45, false, 4.6, 90, false, NULL, NULL),
+('Pocket Watch', 'Classic gold pocket watch with chain', 349.99, NULL, 0, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800', (SELECT id FROM categories WHERE slug = 'watches'), 10, false, 4.8, 40, false, NULL, NULL);
