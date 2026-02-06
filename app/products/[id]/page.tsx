@@ -286,7 +286,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                                         {quantity}
                                     </span>
                                     <button
-                                        onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
+                                        onClick={() => setQuantity(Math.min(product.stock ?? 999, quantity + 1))}
                                         className="px-3 py-1.5 hover:bg-gray-100 transition-colors"
                                         disabled={product.stock === 0}
                                     >
