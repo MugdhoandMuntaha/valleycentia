@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Package, ShoppingBag, Settings, Store } from 'lucide-react';
+import { LayoutDashboard, Package, ShoppingBag, Settings, Store, Layers } from 'lucide-react';
 import { cn } from '@/lib/utils'; // Assuming you have a utils file, if not I'll just use template literals
 
 const navItems = [
@@ -15,6 +15,11 @@ const navItems = [
         title: 'Products',
         href: '/admin/products',
         icon: Package,
+    },
+    {
+        title: 'Sections',
+        href: '/admin/sections',
+        icon: Layers,
     },
     {
         title: 'Orders',
@@ -46,8 +51,8 @@ export default function AdminSidebar() {
                             key={item.href}
                             href={item.href}
                             className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 ${isActive
-                                    ? 'bg-white/10 text-white font-medium'
-                                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                                ? 'bg-white/10 text-white font-medium'
+                                : 'text-zinc-400 hover:text-white hover:bg-white/5'
                                 }`}
                         >
                             <item.icon className="w-5 h-5" />

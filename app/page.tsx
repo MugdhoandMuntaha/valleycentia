@@ -1,42 +1,28 @@
-import Link from 'next/link';
-import { ArrowRight, ArrowUp } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
+import { getActiveSectionsWithProducts } from '@/lib/supabase/sections';
 import { Product } from '@/types/database.types';
 import ProductCard from '@/components/product/ProductCard';
-import Button from '@/components/ui/Button';
 import HeroCarousel from '@/components/home/HeroCarousel';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
+import ProductSection from '@/components/home/ProductSection';
 
 
 export default async function Home() {
     const supabase = await createClient();
 
-    // Fetch featured products
-    const { data: featuredProducts } = await supabase
-        .from('products')
-        .select('*')
-        .eq('featured', true)
-        .limit(6);
+    // Fetch dynamic product sections
+    const sections = await getActiveSectionsWithProducts();
 
-    // Fetch all categories
-    const { data: categories } = await supabase
-        .from('categories')
-        .select('*');
+    // Get first section's products for hero carousel
+    const heroProducts = sections[0]?.products?.slice(0, 5) || [];
 
-    // Fetch all products
-    const { data: allProducts } = await supabase
-        .from('products')
-        .select('*');
-
-
-
-    // Prepare carousel slides from featured products
-    const carouselSlides = featuredProducts?.slice(0, 5).map(product => ({
+    // Prepare carousel slides from hero products
+    const carouselSlides = heroProducts.map(product => ({
         id: product.id,
         imageUrl: product.image_url,
         title: product.name,
         subtitle: product.description
-    })) || [];
+    }));
 
     return (
         <div className="min-h-screen">
@@ -52,48 +38,17 @@ export default async function Home() {
 
 
 
-            {/* Featured Products Section */}
+            {/* Dynamic Product Sections */}
             <section className="py-16 bg-white -mt-4">
                 <div className="container mx-auto px-4">
-                    <div className="text-left relative left-[160px] mb-2 flex flex-col justify-center">
-                        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
-                            Featured Products
-                        </h2>
-                        <p className="text-left relative text-gray-600 text-lg mb-1">
-                            Handpicked selections that sparkle with elegance and style
-                        </p>
-                    </div>
-
-                    <FeaturedProducts products={featuredProducts || []} />
-
-                    <div className="text-center mb-16">
-                        <Link href="/products">
-                            <Button size="md" className="flex items-center space-x-2 mx-auto rounded-full">
-                                <span>View All</span>
-                                <ArrowUp className="w-5 h-5" />
-                            </Button>
-                        </Link>
-                    </div>
-
-                    {/* All Products by Category */}
-                    {categories?.map((category) => {
-                        const categoryProducts = allProducts?.filter(p => p.category_id === category.id) || [];
-                        if (categoryProducts.length === 0) return null;
-
-                        return (
-                            <div key={category.id} className="mb-16">
-                                <div className="text-left relative left-[160px] mb-8 flex flex-col justify-center">
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900 capitalize">
-                                        {category.name}
-                                    </h2>
-                                    <p className="text-left relative text-gray-600 text-lg mb-1">
-                                        {category.description || `Explore our ${category.name} collection`}
-                                    </p>
-                                </div>
-                                <FeaturedProducts products={categoryProducts} />
-                            </div>
-                        );
-                    })}
+                    {sections.map((section) => (
+                        <ProductSection
+                            key={section.id}
+                            name={section.name}
+                            description={section.description}
+                            products={section.products}
+                        />
+                    ))}
                 </div>
             </section>
 

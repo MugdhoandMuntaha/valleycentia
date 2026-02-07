@@ -66,3 +66,22 @@ export interface User {
     avatar_url?: string;
     created_at: string;
 }
+
+export interface ProductSection {
+    id: string;
+    name: string;
+    description: string | null;
+    slug: string;
+    display_order: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface ProductSectionItem {
+    id: string;
+    section_id: string;
+    product_id: string;
+    display_order: number;
+    created_at: string;
+}

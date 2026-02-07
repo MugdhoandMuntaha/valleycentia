@@ -16,10 +16,10 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     const hasPromo = product.promo_code && product.promo_price;
 
     return (
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-1 w-full" style={{ height: '500px' }}>
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-1 w-[300px]" style={{ height: '550px' }}>
             {/* Product Image */}
             <Link href={`/products/${product.id}`} className="relative">
-                <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100" style={{ height: '220px' }}>
+                <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 h-[290px]">
                     <Image
                         src={product.image_url || '/placeholder-product.jpg'}
                         alt={product.name}
@@ -51,16 +51,16 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             </Link>
 
             {/* Product Details */}
-            <div className="p-4 flex flex-col flex-grow">
-                {/* Rating */}
-                {product.rating && product.rating > 0 && (
-                    <div className="mb-2">
+            <div className="p-4 flex flex-col h-[300px]">
+                {/* Rating - Reserved space */}
+                <div className="mb-2">
+                    {product.rating && product.rating > 0 && (
                         <StarRating
                             rating={product.rating}
                             reviewCount={product.review_count ?? 0}
                         />
-                    </div>
-                )}
+                    )}
+                </div>
 
                 {/* Product Title */}
                 <Link href={`/products/${product.id}`}>
@@ -70,15 +70,12 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
                 </Link>
 
                 {/* Product Description */}
-                <p className="text-gray-600 text-sm line-clamp-2 mb-3">
+                <p className="text-gray-600 text-sm line-clamp-2 mb-1 h-[40px]">
                     {product.description}
                 </p>
 
-                {/* Spacer to push pricing and button to bottom */}
-                <div className="flex-grow"></div>
-
                 {/* Pricing Section */}
-                <div className="mb-2.5">
+                <div className="mb-2">
                     <div className="flex items-center gap-1.5 mb-1">
                         <span className="text-lg font-bold text-black">
                             ৳{product.price.toFixed(2)}
@@ -90,22 +87,26 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
                         )}
                     </div>
 
-                    {/* Promo Code Section */}
-                    {hasPromo && (
-                        <div className="flex items-center gap-1 text-[10px] bg-green-50 rounded-md px-2 py-1">
-                            <span className="text-green-600 font-medium">
-                                Get it for ৳{product.promo_price?.toFixed(2)} with {product.promo_code}
-                            </span>
-                        </div>
-                    )}
+                    {/* Promo Code Section - Reserved space */}
+                    <div className="min-h-[28px]">
+                        {hasPromo && (
+                            <div className="flex items-center gap-1 text-[10px] bg-green-50 rounded-md px-2 py-1">
+                                <span className="text-green-600 font-medium">
+                                    Get it for ৳{product.promo_price?.toFixed(2)} with {product.promo_code}
+                                </span>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
-                {/* Low Stock Warning */}
-                {(product.stock ?? 0) > 0 && (product.stock ?? 0) <= 5 && (
-                    <p className="text-[10px] text-orange-500 font-medium mb-2 bg-orange-50 rounded px-2 py-1">
-                        Only {product.stock} left in stock!
-                    </p>
-                )}
+                {/* Low Stock Warning - Reserved space */}
+                <div className="mb-1.5">
+                    {(product.stock ?? 0) > 0 && (product.stock ?? 0) <= 5 && (
+                        <p className="text-[10px] text-orange-500 font-medium bg-orange-50 rounded px-2 py-1">
+                            Only {product.stock} left in stock!
+                        </p>
+                    )}
+                </div>
                 <button
                     onClick={() => onAddToCart?.(product)}
                     disabled={product.stock === 0}
